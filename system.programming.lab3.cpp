@@ -7,13 +7,36 @@
 #include <d2d1.h>
 #pragma comment(lib, "d2d1")
 #include "Constants.h"
-#include "Functions_vf.h"
-#include "Function_temp.h"
-#include "Sinusoid.h"
-#include "Square_root.h"
-#include "Parabola.h"
-#include "Hyperbola.h"
+//#include "Functions_vf.h"
+//#include "Function_temp.h"
+//#include "Sinusoid.h"
+//#include "Square_root.h"
+//#include "Parabola.h"
+//#include "Hyperbola.h"
 //#include "Funcs.cpp"
+#include "try_like_that.cpp"
+
+void Upd_Stage(HMENU menu, UINT_PTR curr, UINT_PTR* prev, Function_temp* handler) {
+    EnableMenuItem(menu, curr, MF_GRAYED);
+    EnableMenuItem(menu, *prev, MF_ENABLED);
+    *prev = curr;
+    Functions_vf* func = new Sinusoid;
+    switch (curr) {
+    case OPT_SINUSOID:
+        func = new Sinusoid;
+        break;
+    case OPT_SQUARE_ROOT:
+        func = new Square_root;
+        break;
+    case OPT_PARABOLA:
+        func = new Parabola;
+        break;
+    case OPT_HYPERBOLA:
+        func = new Hyperbola;
+        break;
+    }
+    handler->SetFunc(func);
+}
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -93,7 +116,7 @@ public:
             );
 
             func->RunFunction(size.width, size.height, apt);
-            for (int i = 0; i < NUM - 1; i++) {
+            for (int i = 0; i < 1000 - 1; i++) {
                 pRenderTarget->DrawLine(
                     apt[i],
                     apt[i + 1],
@@ -155,7 +178,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     HMENU hDropDownMenu = CreateMenu();
 
-    AppendMenu(hDropDownMenu, MF_STRING, OPT_SINUSOID, L"Sine");
+    AppendMenu(hDropDownMenu, MF_STRING, OPT_SINUSOID, L"Sinusoid");
     EnableMenuItem(hDropDownMenu, OPT_SINUSOID, MF_GRAYED);
     AppendMenu(hDropDownMenu, MF_STRING, OPT_SQUARE_ROOT, L"Square Root");
     AppendMenu(hDropDownMenu, MF_STRING, OPT_PARABOLA, L"Parabola");
@@ -229,26 +252,4 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         return 0;
     }
     return DefWindowProc(hwnd, message, wParam, lParam);
-}
-
-void Upd_Stage(HMENU menu, UINT_PTR curr, UINT_PTR* prev, Function_temp* handler) {
-    EnableMenuItem(menu, curr, MF_GRAYED);
-    EnableMenuItem(menu, *prev, MF_ENABLED);
-    *prev = curr;
-    Functions_vf* func = new Sinusoid;
-    switch (curr) {
-    case OPT_SINUSOID:
-        func = new Sinusoid;
-        break;
-    case OPT_SQUARE_ROOT:
-        func = new Square_root;
-        break;
-    case OPT_PARABOLA:
-        func = new Parabola;
-        break;
-    case OPT_HYPERBOLA:
-        func = new Hyperbola;
-        break;
-    }
-    handler->SetFunc(func);
 }

@@ -141,25 +141,13 @@
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Functions_vf.h" />
-    <ClInclude Include="Function_temp.h" />
-    <ClInclude Include="Hyperbola.h" />
-    <ClInclude Include="Parabola.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Sinusoid.h" />
-    <ClInclude Include="Square_root.h" />
     <ClInclude Include="system.programming.lab3.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Funcs.cpp" />
-    <ClCompile Include="Functions_vf.cpp" />
-    <ClCompile Include="Function_temp.cpp" />
-    <ClCompile Include="Hyperbola.cpp" />
-    <ClCompile Include="Parabola.cpp" />
-    <ClCompile Include="Sinusoid.cpp" />
-    <ClCompile Include="Square_root.cpp" />
     <ClCompile Include="system.programming.lab3.cpp" />
+    <ClCompile Include="try_like_that.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="system.programming.lab3.rc" />
