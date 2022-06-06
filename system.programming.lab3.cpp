@@ -188,7 +188,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     AppendMenu(hmenu, MF_POPUP, (UINT_PTR)hDropDownMenu, L"Functions");
 
-    hwnd = CreateWindow(szAppName, TEXT("Laboratory 3 - WinAPI"),
+    hwnd = CreateWindow(szAppName, TEXT("Lab 3 System Programming - WinAPI"),
         WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT,
         CW_USEDEFAULT, CW_USEDEFAULT,
